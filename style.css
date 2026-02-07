@@ -1,0 +1,779 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.8s ease;
+}
+
+.subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    animation: fadeIn 1s ease;
+}
+
+.month-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.month-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.month-card:hover::before {
+    left: 100%;
+}
+
+.month-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.month-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.month-card:hover .month-number {
+    color: #764ba2;
+}
+
+.month-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Ay Sayfası Stilleri */
+.back-button {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+.month-page {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+.continue-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.month-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.month-message {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #764ba2;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background: #f5f5f5;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.month-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Fotoğraf Animasyon Efektleri */
+.image-zoom-in {
+    animation: zoomIn 1s ease-out forwards;
+}
+
+.image-fade-in {
+    animation: fadeInImage 1s ease-out forwards;
+}
+
+.image-slide-left {
+    animation: slideFromLeft 1s ease-out forwards;
+}
+
+.image-slide-right {
+    animation: slideFromRight 1s ease-out forwards;
+}
+
+.image-slide-up {
+    animation: slideFromBottom 1s ease-out forwards;
+}
+
+.image-rotate {
+    animation: rotateIn 1s ease-out forwards;
+}
+
+.image-scale {
+    animation: scaleIn 1s ease-out forwards;
+}
+
+.image-bounce {
+    animation: bounceIn 1s ease-out forwards;
+}
+
+.image-flip {
+    animation: flipIn 1s ease-out forwards;
+}
+
+.image-spin {
+    animation: spinIn 1s ease-out forwards;
+}
+
+.image-float {
+    animation: floatIn 1.2s ease-out forwards;
+}
+
+.image-glow {
+    animation: glowIn 1s ease-out forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    75% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes flipIn {
+    0% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spinIn {
+    0% {
+        transform: rotate(360deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes floatIn {
+    0% {
+        transform: translateY(50px) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes glowIn {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(102, 126, 234, 0);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.image-placeholder {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.image-placeholder p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.placeholder-note {
+    font-size: 0.9rem;
+    color: #bbb;
+    font-style: italic;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Kalp Animasyonu */
+.heart {
+    position: fixed;
+    font-size: 20px;
+    color: #ff6b9d;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp 3s ease-out forwards;
+    text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+    will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-150px) scale(1.3) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-400px) scale(0.3) rotate(360deg);
+    }
+}
+
+@keyframes floatUpLeft {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-150px) translateX(-80px) scale(1.3) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-400px) translateX(-150px) scale(0.3) rotate(360deg);
+    }
+}
+
+@keyframes floatUpRight {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(-150px) translateX(80px) scale(1.3) rotate(-180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-400px) translateX(150px) scale(0.3) rotate(-360deg);
+    }
+}
+
+/* Balon Animasyonu */
+.balloon {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    z-index: 9998;
+    animation: balloonFloat 4s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes balloonFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.95;
+        transform: translateY(-200px) translateX(20px) scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-600px) translateX(40px) scale(0.4) rotate(10deg);
+    }
+}
+
+@keyframes balloonFloatLeft {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.95;
+        transform: translateY(-200px) translateX(-30px) scale(1.1) rotate(-5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-600px) translateX(-60px) scale(0.4) rotate(-10deg);
+    }
+}
+
+@keyframes balloonFloatRight {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.95;
+        transform: translateY(-200px) translateX(30px) scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-600px) translateX(60px) scale(0.4) rotate(10deg);
+    }
+}
+
+/* Oyun Sayfası Stilleri */
+.game-page {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+.game-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.game-instruction {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.score-display {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.score-display span:first-child {
+    color: #4caf50;
+}
+
+.score-display span:last-child {
+    color: #f44336;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.months-section h2,
+.images-section h2 {
+    text-align: center;
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.months-grid-game,
+.images-grid-game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.game-month-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.game-month-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-month-card.selected {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+}
+
+.game-month-card.matched {
+    background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.game-image-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 1;
+    background: #f5f5f5;
+}
+
+.game-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.game-image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-image-card.selected {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+    border: 3px solid #667eea;
+}
+
+.game-image-card.matched {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    border: 3px solid #4caf50;
+}
+
+.game-image-card.wrong {
+    border: 3px solid #f44336;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.game-message {
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    display: none;
+}
+
+.game-message.success {
+    background: #e8f5e9;
+    color: #4caf50;
+    border: 2px solid #4caf50;
+}
+
+.game-message.error {
+    background: #ffebee;
+    color: #f44336;
+    border: 2px solid #f44336;
+}
+
+.game-message.warning {
+    background: #fff3e0;
+    color: #ff9800;
+    border: 2px solid #ff9800;
+}
+
+.game-message.complete {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 25px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .months-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .month-card {
+        padding: 20px;
+    }
+    
+    .month-number {
+        font-size: 2rem;
+    }
+    
+    .month-name {
+        font-size: 1.2rem;
+    }
+    
+    .month-title {
+        font-size: 2rem;
+    }
+    
+    .month-message {
+        font-size: 1.1rem;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+    
+    .image-container {
+        min-height: 300px;
+    }
+    
+    .game-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .months-grid-game,
+    .images-grid-game {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .game-title {
+        font-size: 1.8rem;
+    }
+}
+

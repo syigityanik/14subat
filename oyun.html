@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eşleştirme Oyunu ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Ana Sayfaya Dön</a>
+        
+        <div class="game-page">
+            <h1 class="game-title">Fotoğrafları Aylarla Eşleştir ❤️</h1>
+            <p class="game-instruction">Önce bir ay seç, sonra o aya ait fotoğrafı bul!</p>
+            <div class="score-display">
+                <span>Doğru: <span id="correctCount">0</span></span>
+                <span>Yanlış: <span id="wrongCount">0</span></span>
+            </div>
+            
+            <div class="game-container">
+                <div class="months-section">
+                    <h2>Aylar</h2>
+                    <div class="months-grid-game" id="monthsGrid"></div>
+                </div>
+                
+                <div class="images-section">
+                    <h2>Fotoğraflar</h2>
+                    <div class="images-grid-game" id="imagesGrid"></div>
+                </div>
+            </div>
+            
+            <div class="game-message" id="gameMessage"></div>
+        </div>
+    </div>
+    
+    <script src="oyun.js"></script>
+</body>
+</html>
+
